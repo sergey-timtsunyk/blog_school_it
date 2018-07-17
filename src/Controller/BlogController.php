@@ -13,7 +13,6 @@ class BlogController extends Controller
      */
     public function index()
     {
-
         $entityManager = $this->getDoctrine()->getManager();
 
         $repository = $entityManager->getRepository(Author::class);
