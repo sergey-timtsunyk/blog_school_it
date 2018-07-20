@@ -9,14 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AuthorRepository")
  */
-class Author
+class Author extends User
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -29,16 +29,6 @@ class Author
     private $nik;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $password;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="author")
      */
     private $posts;
@@ -46,11 +36,8 @@ class Author
     public function __construct()
     {
         $this->posts = new ArrayCollection();
-    }
 
-    public function getId()
-    {
-        return $this->id;
+        parent::__construct();
     }
 
     public function getName(): ?string
@@ -73,30 +60,6 @@ class Author
     public function setNik(?string $nik): self
     {
         $this->nik = $nik;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(?string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
 
         return $this;
     }

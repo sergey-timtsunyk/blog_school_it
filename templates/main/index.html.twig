@@ -16,7 +16,7 @@
         <ul>
             {% for post in posts %}
                 <li>
-                    <a href="{{ path('post_path', {'path': post.path}) }}">
+                    <a href="{{ path('post_path', {'key': post.path}) }}">
                         {{ post.title }} ({{ post.publicAt|date("m/d/Y") }})
                     </a>
                 </li>
