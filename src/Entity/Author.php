@@ -36,8 +36,6 @@ class Author
     public function __construct()
     {
         $this->posts = new ArrayCollection();
-
-        parent::__construct();
     }
 
     public function getName(): ?string
@@ -93,5 +91,10 @@ class Author
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

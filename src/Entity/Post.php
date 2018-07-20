@@ -32,7 +32,7 @@ class Post
     private $createAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $publicAt;
 
@@ -45,6 +45,11 @@ class Post
      * @ORM\ManyToOne(targetEntity="Author", inversedBy="posts")
      */
     private $author;
+
+    public function __construct()
+    {
+        $this->createAt = new \DateTime();
+    }
 
     public function getId()
     {
@@ -121,5 +126,13 @@ class Post
         $this->author = $author;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreateAtValue()
+    {
+        $this->createAt = new \DateTime();
     }
 }
