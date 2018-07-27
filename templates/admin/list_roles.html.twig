@@ -1,0 +1,12 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+        <strong>
+            {% for value in object.roles %}
+                {{ value }},
+            {% endfor %}
+        </strong>
+
+    </div>
+{% endblock %}

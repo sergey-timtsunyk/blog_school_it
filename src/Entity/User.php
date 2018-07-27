@@ -27,4 +27,9 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    public function hasRole($role = null)
+    {
+        return $role ? parent::hasRole($role) : false;
+    }
 }

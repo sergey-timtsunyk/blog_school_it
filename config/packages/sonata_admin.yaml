@@ -2,8 +2,18 @@ sonata_admin:
     title: 'Admin BLOG'
     dashboard:
         blocks:
-            - { type: sonata.admin.block.admin_list, position: left }
-
+            - { type: sonata.admin.block.admin_list, position: left, settings: {groups: [sonata_content, sonata_user]} }
+        groups:
+            sonata_content:
+                label: Post
+                items:
+                    - admin.post
+                    - admin.author
+            sonata_user:
+                label: User
+                roles: [ ROLE_ADMIN ]
+                items:
+                    - admin.user
 sonata_block:
     blocks:
         sonata.admin.block.admin_list:

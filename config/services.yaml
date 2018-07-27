@@ -43,3 +43,10 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: Authr by Post }
         public: true
+
+    admin.user:
+        class: App\Admin\UserAdmin
+        arguments: [~, App\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: User }
+        public: true
